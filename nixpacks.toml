@@ -1,12 +1,13 @@
 # Nixpacks configuration for Railway deployment
 
 [phases.setup]
-nixPkgs = ["python310", "nodejs_20"]
+nixPkgs = ["python310", "nodejs_20", "python310Packages.pip"]
 
 [phases.install]
 cmds = [
     "cd frontend && npm ci",
-    "pip install -e ."
+    "python -m pip install --upgrade pip",
+    "python -m pip install -r requirements.txt"
 ]
 
 [phases.build]
