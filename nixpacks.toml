@@ -3,17 +3,5 @@
 # Use both Node and Python providers
 providers = ["node", "python"]
 
-[phases.setup]
-nixPkgs = ["nodejs_20"]
-
-[phases.install]
-cmds = [
-    "cd frontend && npm ci",
-    "pip install -r requirements.txt"
-]
-
-[phases.build]
-cmds = ["cd frontend && npm run build"]
-
 [start]
 cmd = "python -m backend.main"
